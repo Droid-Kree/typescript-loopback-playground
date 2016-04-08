@@ -1,7 +1,9 @@
-/// <reference path="../.."/>
+/// <reference path="../node_modules/typescript/lib/lib.es6.d.ts"/>
+/// <reference path="../typings/node/node.d.ts" />
+/// <reference path="../node_modules/definition-header/dist/index.d.ts" />
 
-import {loopback} from 'loopback';
-import {boot} from 'loopback-boot';
+import * as loopback from 'loopback';
+import * as boot from 'loopback-boot';
 
 export let app = loopback();
 
@@ -20,7 +22,7 @@ app.start = function() {
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, <any>__dirname, function(err) {
+boot(app, __dirname, function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`

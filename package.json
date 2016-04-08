@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
-    "build": "tsc -p ./server",
+    "build": "tsc --module commonjs -p ./server",
     "start": "node .",
     "pretest": "jshint .",
-    "posttest": "nsp check"
+    "posttest": "nsp check",
+    "postinstall": "node node_modules/tsd/build/cli install"
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -21,11 +22,16 @@
   "devDependencies": {
     "jshint": "^2.5.6",
     "nsp": "^2.1.0",
+    "ts-node": "^0.7.1",
+    "tsd": "^0.6.5",
     "typescript": "^1.8.9"
   },
   "repository": {
     "type": "",
     "url": ""
+  },
+  "typescript": {
+    "definition": "typings/tsd.d.ts"
   },
   "license": "(c) KreeDev",
   "private": true,
