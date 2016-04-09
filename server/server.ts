@@ -4,7 +4,7 @@
 
 import * as loopback from 'loopback';
 import * as boot from 'loopback-boot';
-import * as open from 'open';
+import * as opn from 'opn';
 
 export let app = loopback();
 
@@ -20,8 +20,9 @@ app.start = function() {
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
 
-    console.log('STARTED: ', explorerPath);
-    open(explorerPath);
+    console.log('STARTED: ', baseUrl);
+    console.log(opn);
+    opn( (baseUrl + explorerPath) );
   });
 };
 

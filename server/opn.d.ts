@@ -1,4 +1,4 @@
-declare module 'open' {
+declare module 'opn' {
   var x: any;
   export = x;
 }
