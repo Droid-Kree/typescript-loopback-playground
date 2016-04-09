@@ -4,12 +4,17 @@
     "connector": "memory"
   },
   "mongo": {
-    "host": "localhost",
-    "port": 27017,
+    "connector": "mongodb",
     "database": "loopback_playground",
-    "password": "",
+    "host": "localhost",
     "name": "mongo",
-    "user": "",
-    "connector": "mongodb"
+    "password": "",
+    "port": 27017,
+    "server": {
+      "auto_reconnect": true,
+      "reconnectTries": 100,
+      "reconnectInterval": 1000
+    },
+    "user": ""
   }
 }
