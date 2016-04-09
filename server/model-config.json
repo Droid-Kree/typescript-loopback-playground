@@ -33,11 +33,11 @@
     "public": false
   },
   "Movie": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   },
   "Theater": {
-    "dataSource": "db",
+    "dataSource": "mongo",
     "public": true
   }
 }

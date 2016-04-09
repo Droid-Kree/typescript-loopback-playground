@@ -3,12 +3,12 @@
     "name": "db",
     "connector": "memory"
   },
-  "Mongo": {
+  "mongo": {
     "host": "localhost",
     "port": 27017,
     "database": "loopback_playground",
     "password": "",
-    "name": "Mongo",
+    "name": "mongo",
     "user": "",
     "connector": "mongodb"
   }

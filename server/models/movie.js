@@ -1,22 +1,15 @@
 module.exports = function (Movie) {
-    Movie.data = function (cb) {
-        var currentDate = new Date();
-        var currentHour = currentDate.getHours();
-        var OPEN_HOUR = 6;
-        var CLOSE_HOUR = 20;
-        console.log('Current hour is ' + currentHour);
-        var response;
-        if (currentHour > OPEN_HOUR && currentHour < CLOSE_HOUR) {
-            response = 'We are open for business.';
-        }
-        else {
-            response = 'Sorry, we are closed. Open daily from 6am to 8pm.';
-        }
-        cb(null, response);
+    Movie.list = function (cb) {
+        var movies = [
+            { title: 'Movie 0' },
+            { title: 'Movie 1' },
+            { title: 'Movie 2' }
+        ];
+        cb(null, movies);
     };
-    Movie.remoteMethod('data', {
-        http: { path: '/data', verb: 'get' },
-        returns: { arg: 'data', type: 'string' }
+    Movie.remoteMethod('list', {
+        http: { path: '/list', verb: 'get' },
+        returns: { arg: 'list', type: 'string' }
     });
 };
 //# sourceMappingURL=movie.js.map
