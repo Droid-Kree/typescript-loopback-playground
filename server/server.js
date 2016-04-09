@@ -4,6 +4,7 @@
 "use strict";
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var open = require('open');
 exports.app = loopback();
 exports.app.start = function () {
     // start the web server
@@ -15,6 +16,8 @@ exports.app.start = function () {
             var explorerPath = exports.app.get('loopback-component-explorer').mountPath;
             console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
         }
+        console.log('STARTED: ', explorerPath);
+        open(explorerPath);
     });
 };
 // Bootstrap the application, configure models, datasources and middleware.
