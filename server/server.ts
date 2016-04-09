@@ -8,6 +8,15 @@ import * as opn from 'opn';
 
 export let app = loopback();
 
+app.globals = {};
+
+app.globals.MongoClient = require('mongodb').MongoClient;
+let connectionString = 'mongodb://localhost:27017/loopback_playground';
+
+app.globals.MongoClient.connect(connectionString, function (err, db) {
+  app.globals.database = db;
+});
+
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -20,9 +29,7 @@ app.start = function() {
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
 
-    console.log('STARTED: ', baseUrl);
-    console.log(opn);
-    opn( (baseUrl + explorerPath) );
+    opn( (baseUrl + explorerPath), { app: 'google chrome' } );
   });
 };
 

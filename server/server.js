@@ -5,8 +5,13 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var opn = require('opn');
-
 exports.app = loopback();
+exports.app.globals = {};
+exports.app.globals.MongoClient = require('mongodb').MongoClient;
+var connectionString = 'mongodb://localhost:27017/loopback_playground';
+exports.app.globals.MongoClient.connect(connectionString, function (err, db) {
+    exports.app.globals.database = db;
+});
 exports.app.start = function () {
     // start the web server
     return exports.app.listen(function () {
@@ -17,9 +22,7 @@ exports.app.start = function () {
             var explorerPath = exports.app.get('loopback-component-explorer').mountPath;
             console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
         }
-        console.log('STARTED: ', baseUrl);
-        console.log(opn);
-        opn((baseUrl + explorerPath));
+        opn((baseUrl + explorerPath), { app: 'google chrome' });
     });
 };
 // Bootstrap the application, configure models, datasources and middleware.
