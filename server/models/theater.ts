@@ -13,12 +13,11 @@ module.exports = function(Theater:any) {
     var theaters = [];
     var filter = {};
 
-    var test = Theater.find(filter, function (err, theater) {
-      theaters.push(theater);
-      console.log('theater: ', theater);
+    var test = Theater.find(filter, async function (err, theater) {
+      console.log('before return');
+      return theater;
     });
 
-    await theaters;
     console.log('test: ', test);
     console.log('theaters: ', theaters);
     cb(null, theaters);

@@ -21,10 +21,11 @@ module.exports = function (Theater) {
             var theaters = [];
             var filter = {};
             var test = Theater.find(filter, function (err, theater) {
-                theaters.push(theater);
-                console.log('theater: ', theater);
+                return __awaiter(this, void 0, void 0, function* () {
+                    console.log('before return');
+                    return theater;
+                });
             });
-            yield theaters;
             console.log('test: ', test);
             console.log('theaters: ', theaters);
             cb(null, theaters);
